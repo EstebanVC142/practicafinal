@@ -84,6 +84,34 @@ void InsertarDatoVector(int* &_vector,int d, int _n)
 	_vector = __vector;
 }
 
+int BuscarMayorVector(int* &_vector, int _n)
+{
+	int max = _vector[0];
+
+	for (int i = 1; i < _n; i++)
+	{
+		if (_vector[i] > max)
+		{
+			max = _vector[i];
+		}
+	}
+	return max;
+}
+
+int BuscarMenorVector(int* &_vector, int _n)
+{
+	int min = _vector[0];
+
+	for (int i = 1; i < _n; i++)
+	{
+		if (_vector[i] < min)
+		{
+			min = _vector[i];
+		}
+	}
+	return min;
+}
+
 void EliminarDatoVector(int* &_vector,int d, int &_n)
 {
 	int contar = 0;
@@ -170,10 +198,19 @@ void main ()
 							}
 							else
 							{
-								cout << "\nLa posicion del dato |"<< d <<"| es: "<< b;
+								cout << "\nLa posicion del dato |"<< d <<"| es: "<< b << ".";
 							}
 
 							getch();
+							break;
+						case('G'):
+							d = BuscarMayorVector(vector, n);
+							cout << "\nEl dato mayor es: " << d <<".";
+							break;
+						case('L'):
+							d = BuscarMenorVector(vector, n);
+							cout << "\nEl dato menor es: " << d <<".";
+							break;
 					}
 					
 				}
