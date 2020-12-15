@@ -7,6 +7,7 @@ int *vector;
 int n = -1;
 char opM1[] = {'V','M','E','T'};
 char opM2[] = {'C','M','I','E','B','G','L','V'};
+bool vc = false;
 
 ////////////////////////////////// Metodos
 char IngresarCaracterOpcionesMensaje(char letras[],int k)
@@ -30,6 +31,15 @@ char IngresarCaracterOpcionesMensaje(char letras[],int k)
 }
 
 int IngresarNumero(char* mensaje)
+{
+	int Numero;
+	
+	cout << "\n" << mensaje;
+	cin >> Numero;
+	return (Numero);
+}
+
+int IngresarNumeroPositivo(char* mensaje)
 {
 	int Numero;
 	do{
@@ -154,7 +164,7 @@ void main ()
 		switch(c)
 		{
 			case('V'):
-         	c2 = ' ';
+         		c2 = ' ';
 				while(c2 != 'V')
 				{
 			   	clrscr();
@@ -172,24 +182,45 @@ void main ()
 					switch(c2)
 					{
 						case('C'):
-							n = IngresarNumero("Ingrese el numero de datos del vector: ");
+							n = IngresarNumeroPositivo("Ingrese el numero de datos del vector: ");
 							vector = new int[n];
 							LlenarVector(vector, n);
+							vc = true;
 							break;
 						case('M'):
+							if (!vc)
+							{
+								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								break;
+							}
 							ImprimirVector(vector, n);
 							getch();
 							break;
 						case('I'):
+							if(!vc)
+							{
+								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								break;
+							}
 							d = IngresarNumero("Ingrese el dato que desea insertar: ");
 							InsertarDatoVector(vector,d, n);
                     		 n++;
 							break;
 						case('E'):
+							if(!vc)
+							{
+								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								break;
+							}
 							d = IngresarNumero("Ingrese el dato que desea eliminar: ");
 							EliminarDatoVector(vector, d, n);
 							break;
 						case('B'):
+							if(!vc)
+							{
+								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								break;
+							}
 							d = IngresarNumero("Ingrese el dato que desea buscar: ");
 							b = BuscarDatoVector(vector, d, n);
 							if (b == -1)	
@@ -204,10 +235,16 @@ void main ()
 							getch();
 							break;
 						case('G'):
+
 							d = BuscarMayorVector(vector, n);
 							cout << "\nEl dato mayor es: " << d <<".";
 							break;
 						case('L'):
+							if(!vc)
+							{
+								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								break;
+							}
 							d = BuscarMenorVector(vector, n);
 							cout << "\nEl dato menor es: " << d <<".";
 							break;
