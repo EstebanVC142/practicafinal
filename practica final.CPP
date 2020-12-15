@@ -58,6 +58,20 @@ void ImprimirVector(int* &_vector,int _n)
 	}
 }
 
+
+int BuscarDatoVector(int* &_vector, d, int _n)
+{
+
+	for (int i = 0; i < _n; ++i)
+	{
+		if (_vector[i] == d)
+		{
+			return (i);
+		}
+	}
+	return (-1);
+}
+
 void InsertarDatoVector(int* &_vector,int d, int _n)
 {
 	int* __vector = new int[_n+1];
@@ -126,6 +140,7 @@ void main ()
 					cout << "(V) Volver al menu principal.\n";
 					c2 = IngresarCaracterOpcionesMensaje(opM2,8);
 					int d = 0;
+					int b = 0;
 					switch(c2)
 					{
 						case('C'):
@@ -138,14 +153,27 @@ void main ()
 							getch();
 							break;
 						case('I'):
-							d = IngresarNumero("Ingrese el numero de dato que desea insertar: ");
+							d = IngresarNumero("Ingrese el dato que desea insertar: ");
 							InsertarDatoVector(vector,d, n);
                     		 n++;
 							break;
 						case('E'):
-							d = IngresarNumero("Ingrese el numero de dato que desea eliminar: ");
+							d = IngresarNumero("Ingrese el dato que desea eliminar: ");
 							EliminarDatoVector(vector, d, n);
 							break;
+						case('B'):
+							d = IngresarNumero("Ingrese el dato que desea buscar: ");
+							b = BuscarDatoVector(vector, d, n);
+							if (b == -1)	
+							{
+								cout<< "\nEl dato no se encontro."
+							}
+							else
+							{
+								cout << "\nLa posicion del dato "<< d <<" es "<< b;
+							}
+
+							getch();
 					}
 					
 				}
