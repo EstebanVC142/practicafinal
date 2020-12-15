@@ -58,6 +58,18 @@ void ImprimirVector(int* &_vector,int _n)
 	}
 }
 
+void InsertarDatoVector(int* &_vector,int d, int _n)
+{
+	int __vector[_n+1];
+
+	for (int i = 0; i < _n; ++i)
+	{
+		__vector[i] =_vector[i];
+	}
+	__vector[_n] = d;
+	_vector = __vector;
+}
+
 
 ////////////////////////////////// Programa principal
 void main ()
@@ -99,6 +111,10 @@ void main ()
 							break;
 						case('M'):
 							ImprimirVector(vector, n);
+							break;
+						case('I'):
+							int d = IngresarNumero("Ingrese el numero de dato que desea Insertar: ");
+							InsertarDatoVector(vector,d, n);
 							break;
 					}
 					
