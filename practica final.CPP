@@ -62,12 +62,36 @@ void InsertarDatoVector(int* &_vector,int d, int _n)
 {
 	int* __vector = new int[_n+1];
 
-	for (int i = 0; i < _n; ++i)
+	for (int i = 0; i < _n; i++)
 	{
 		__vector[i] =_vector[i];
 	}
 	__vector[_n] = d;
 	_vector = __vector;
+}
+
+void EliminarDatoVector(int* &_vector,int d, int &_n)
+{
+	int contar = 0;
+	for (int i = 0; i < _n; i++)
+	{
+		if (_vector[i] == d)
+		{
+			contar++;
+		}
+	}
+	int* __vector = new int[_n - contar];
+	int k = 0;
+	for (int i = 0; i < _n; i++)
+	{
+		if (_vector[i] != d)
+		{
+			__vector[k] = _vector[i];
+			k++;
+		}
+	}
+	_vector = __vector;
+	_n -= contar;
 }
 
 
@@ -111,12 +135,16 @@ void main ()
 							break;
 						case('M'):
 							ImprimirVector(vector, n);
-                     getch();
+							getch();
 							break;
 						case('I'):
-							int d = IngresarNumero("Ingrese el numero de dato que desea Insertar: ");
+							int d = IngresarNumero("Ingrese el numero de dato que desea insertar: ");
 							InsertarDatoVector(vector,d, n);
-                     n++;
+                    		 n++;
+							break;
+						case('E'):
+							int d = IngresarNumero("Ingrese el numero de dato que desea eliminar: ");
+							EliminarDatoVector(vector,d, n);
 							break;
 					}
 					
