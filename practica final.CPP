@@ -39,7 +39,15 @@ int IngresarNumero(char* mensaje)
 
 	return (Numero);
 }
-
+void LlenarVector(int* _vector[],int _n)
+{
+	*_vector = new int[_n]; 
+	for (int i = 0; i < _n; ++i)
+	{
+		cout << "\nIngrese el elemento de la posicion "<<i<< ": ";
+		cin >> *_vector[i];
+	}
+}
 
 
 ////////////////////////////////// Programa principal
@@ -76,8 +84,12 @@ void main ()
 					switch(c2)
 					{
 						case('C'):
-						n = IngresarNumero("Digite el numero2:");
-						cout << n;
+						n = IngresarNumero("Ingrese el numero de datos del vector: ");
+						LlenarVector(&vector, n);
+						for (int i = 0; i < n; ++i)
+						 {
+						 	cout << vector[i];
+						 } 
 						getch();
 							//LlenarVector(LlenarVector[])
 					}
