@@ -59,7 +59,7 @@ void ImprimirVector(int* &_vector,int _n)
 }
 
 
-int BuscarDatoVector(int* &_vector, d, int _n)
+int BuscarDatoVector(int* &_vector, int d, int _n)
 {
 
 	for (int i = 0; i < _n; ++i)
@@ -166,11 +166,11 @@ void main ()
 							b = BuscarDatoVector(vector, d, n);
 							if (b == -1)	
 							{
-								cout<< "\nEl dato no se encontro."
+								cout<< "\nEl dato no se encontro.";
 							}
 							else
 							{
-								cout << "\nLa posicion del dato "<< d <<" es "<< b;
+								cout << "\nLa posicion del dato |"<< d <<"| es: "<< b;
 							}
 
 							getch();
