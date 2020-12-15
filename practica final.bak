@@ -3,12 +3,12 @@
 #include <conio.h>
 #include <string>
 ////////////////////////////////// Variables globales
-int vector[1];
+int *vector;
 int n = -1;
 char opM1[] = {'V','M','E','T'};
 char opM2[] = {'C','M','I','E','B','G','L','V'};
 
-////////////////////////////////// Metodos 
+////////////////////////////////// Metodos
 char IngresarCaracterOpcionesMensaje(char letras[],int k)
 {
 	char c;
@@ -33,25 +33,46 @@ int IngresarNumero(char* mensaje)
 {
 	int Numero;
 	do{
-		cout << "\n" << mensaje; 
-		cin >> Numero;	
+		cout << "\n" << mensaje;
+		cin >> Numero;
 	}while (Numero<0);
 
 	return (Numero);
 }
-void LlenarVector(int* _vector[],int _n)
+void LlenarVector(int* &_vector,int _n)
 {
-	*_vector = new int[_n]; 
+
 	for (int i = 0; i < _n; ++i)
 	{
 		cout << "\nIngrese el elemento de la posicion "<<i<< ": ";
-		cin >> *_vector[i];
+		cin >> _vector[i];
 	}
+}
+
+void ImprimirVector(int* &_vector,int _n)
+{
+
+	for (int i = 0; i < _n; ++i)
+	{
+		cout << "| "<<_vector[i]<< " |";
+	}
+}
+
+void InsertarDatoVector(int* &_vector,int d, int _n)
+{
+	int __vector[_n+1];
+
+	for (int i = 0; i < _n; ++i)
+	{
+		__vector[i] =_vector[i];
+	}
+	__vector[_n] = d;
+	_vector = __vector;
 }
 
 
 ////////////////////////////////// Programa principal
-void main () 
+void main ()
 {
 	char c = ' ';
 	char c2 = ' ';
@@ -69,7 +90,7 @@ void main ()
 			case('V'):
          	c2 = ' ';
 				while(c2 != 'V')
-				{		  
+				{
 			   	clrscr();
 					cout << "(C) llenar vector.\n";
 					cout << "(M) Imprimir vector.\n";
@@ -80,18 +101,21 @@ void main ()
 					cout << "(L) Imprimir dato menor del vector.\n";
 					cout << "(V) Volver al menu principal.\n";
 					c2 = IngresarCaracterOpcionesMensaje(opM2,8);
-					
+
 					switch(c2)
 					{
 						case('C'):
-						n = IngresarNumero("Ingrese el numero de datos del vector: ");
-						LlenarVector(&vector, n);
-						for (int i = 0; i < n; ++i)
-						 {
-						 	cout << vector[i];
-						 } 
-						getch();
-							//LlenarVector(LlenarVector[])
+							n = IngresarNumero("Ingrese el numero de datos del vector: ");
+							vector = new int[n];
+							LlenarVector(vector, n);
+							break;
+						case('M'):
+							ImprimirVector(vector, n);
+							break;
+						case('I'):
+							int d = IngresarNumero("Ingrese el numero de dato que desea Insertar: ");
+							InsertarDatoVector(vector,d, n);
+							break;
 					}
 					
 				}
