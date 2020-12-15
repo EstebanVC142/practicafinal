@@ -49,6 +49,15 @@ void LlenarVector(int* &_vector,int _n)
 	}
 }
 
+void ImprimirVector(int* &_vector,int _n)
+{
+
+	for (int i = 0; i < _n; ++i)
+	{
+		cout << "| "<<_vector[i]<< " |";
+	}
+}
+
 
 ////////////////////////////////// Programa principal
 void main ()
@@ -84,15 +93,13 @@ void main ()
 					switch(c2)
 					{
 						case('C'):
-						n = IngresarNumero("Ingrese el numero de datos del vector: ");
-                  vector = new int[n];
-						LlenarVector(vector, n);
-						for (int i = 0; i < n; ++i)
-						 {
-						 	cout << vector[i];
-						 } 
-						getch();
-							//LlenarVector(LlenarVector[])
+							n = IngresarNumero("Ingrese el numero de datos del vector: ");
+							vector = new int[n];
+							LlenarVector(vector, n);
+							break;
+						case('M'):
+							ImprimirVector(vector, n);
+							break;
 					}
 					
 				}
