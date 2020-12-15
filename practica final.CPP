@@ -191,6 +191,7 @@ void main ()
 							if (!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
 								break;
 							}
 							ImprimirVector(vector, n);
@@ -200,6 +201,7 @@ void main ()
 							if(!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
 								break;
 							}
 							d = IngresarNumero("Ingrese el dato que desea insertar: ");
@@ -210,6 +212,7 @@ void main ()
 							if(!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
 								break;
 							}
 							d = IngresarNumero("Ingrese el dato que desea eliminar: ");
@@ -219,6 +222,7 @@ void main ()
 							if(!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
 								break;
 							}
 							d = IngresarNumero("Ingrese el dato que desea buscar: ");
@@ -243,6 +247,7 @@ void main ()
 							if(!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
 								break;
 							}
 							d = BuscarMenorVector(vector, n);
