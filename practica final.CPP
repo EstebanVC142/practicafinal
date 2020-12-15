@@ -125,7 +125,7 @@ void main ()
 					cout << "(L) Imprimir dato menor del vector.\n";
 					cout << "(V) Volver al menu principal.\n";
 					c2 = IngresarCaracterOpcionesMensaje(opM2,8);
-
+					int d = 0;
 					switch(c2)
 					{
 						case('C'):
@@ -138,13 +138,13 @@ void main ()
 							getch();
 							break;
 						case('I'):
-							int d = IngresarNumero("Ingrese el numero de dato que desea insertar: ");
+							d = IngresarNumero("Ingrese el numero de dato que desea insertar: ");
 							InsertarDatoVector(vector,d, n);
                     		 n++;
 							break;
 						case('E'):
-							int d = IngresarNumero("Ingrese el numero de dato que desea eliminar: ");
-							EliminarDatoVector(vector,d, n);
+							d = IngresarNumero("Ingrese el numero de dato que desea eliminar: ");
+							EliminarDatoVector(vector, d, n);
 							break;
 					}
 					
