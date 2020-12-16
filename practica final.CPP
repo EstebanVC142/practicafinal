@@ -179,9 +179,29 @@ void ImprimirMatriz(int** &_matriz,int _m2, int _n2)
 	}
 }
 
+int IdentidadMatriz(int** &_matriz,int _m2, int _n2)	
+{
+	int identidad = 0;
+	for (int i = 0; i < _m2; i++)
+	{
+		for (int j = 0; j <  _n2; j++)
+		{
+			if ((i == j)&&(matriz[i][j] != 1))
+			{
+				identidad = 1;
+				return (identidad);
+			}
+		}
+	}
+	return (identidad);
+}
+
+
+
 ////////////////////////////////// Programa principal
 void main ()
 {
+	int aux = 0;
 	char c = ' ';
 	char c2 = ' ';
 	while(c != 'T')
@@ -343,19 +363,28 @@ void main ()
 					int d = 0;
 					int b = 0;
 					if (c2=='C'){
-							m2 = IngresarNumeroPositivo("Ingrese el numero de datos de filas de la matriz: ");
-							n2 = IngresarNumeroPositivo("Ingrese el numero de datos de columnas de la matriz: ");
-							matriz = new int* [m2];
-							for (int i = 0; i < m2; i++)
-							{
-								matriz[i] = new int [n2];
-							}
-							LlenarMatriz(matriz, m2, n2);
-							mc = true;
-               }else if(c2 == 'M'){
-							ImprimirMatriz(matriz, m2, n2);
-							getch();
+						m2 = IngresarNumeroPositivo("Ingrese el numero de datos de filas de la matriz: ");
+						n2 = IngresarNumeroPositivo("Ingrese el numero de datos de columnas de la matriz: ");
+						matriz = new int* [m2];
+						for (int i = 0; i < m2; i++)
+						{
+							matriz[i] = new int [n2];
+						}
+						LlenarMatriz(matriz, m2, n2);
+						mc = true;
+               		}else if(c2 == 'M'){
+						ImprimirMatriz(matriz, m2, n2);
+						getch();
+               		}else if(c2 == 'M'){
+						aux = IdentidadMatriz(matriz, m2, n2);
+						if (aux == 0)
+						{
+							cout << "\nLa matriz es identidad.";
+						}else{
+							cout << "\nLa matriz no es identidad.";
+						}
 
+						getch();
 					}	
 				}	
 				break;
