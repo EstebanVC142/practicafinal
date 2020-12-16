@@ -3,13 +3,17 @@
 #include <conio.h>
 #include <string>
 ////////////////////////////////// Variables globales
-int *vector;
-int n = -1;
-char opM1[] = {'V','M','E','T'};
-char opM2[] = {'C','M','I','E','B','G','L','V'};
-bool vc = false;
+int *vector; // Vector para el menu de vectores
+int n = -1; // Cantidad de elementos del vector
+char opM1[] = {'V','M','E','T'}; // Posibles entradas del menu principal o menu 1 
+char opM2[] = {'C','M','I','E','B','G','L','V'}; // Posibles entradas del submenu vectores o matrices o menu 2
+bool vc = false; // Bandera para comprobar paso por c del menu vector
+bool mc = false; // Bandera para comprobar paso por c del menu matriz
+int **matriz;
+int m2 = -1; // 
+int n2 = -1;
 
-////////////////////////////////// Metodos
+////////////////////////////////// Funciones 
 char IngresarCaracterOpcionesMensaje(char letras[],int k)
 {
 	char c;
@@ -49,7 +53,10 @@ int IngresarNumeroPositivo(char* mensaje)
 
 	return (Numero);
 }
-void LlenarVector(int* &_vector,int _n)
+
+//-----------> Funciones del vector
+
+void LlenarVector(int* &_vector,int _n)	
 {
 
 	for (int i = 0; i < _n; ++i)
@@ -145,7 +152,19 @@ void EliminarDatoVector(int* &_vector,int d, int &_n)
 	_vector = __vector;
 	_n -= contar;
 }
+//----------> Funciones para matriz
+void LlenarMatriz(int* &_matriz,int _m2, _n2)	
+{
 
+	for (int i = 0; i < _m2; ++i)
+	{
+		for (int j = 0; j <  _n2; j++)
+		{
+			cout << "\nIngrese el elemento de la posicion ["<<i<< ", "<<j<<"]: ";
+			cin >> _matriz[i][j];
+		}	
+	}
+}
 
 ////////////////////////////////// Programa principal
 void main ()
@@ -167,7 +186,7 @@ void main ()
          		c2 = ' ';
 				while(c2 != 'V')
 				{
-			   	clrscr();
+			   		clrscr();
 					cout << "(C) llenar vector.\n";
 					cout << "(M) Imprimir vector.\n";
 					cout << "(I) Insertar dato en el vector.\n";
@@ -271,6 +290,7 @@ void main ()
 							}
 							d = BuscarMayorVector(vector, n);
 							cout << "\nEl dato mayor es: " << d <<".";
+							getch();
 							break;
 						case('L'):
 							if(!vc)
@@ -287,12 +307,39 @@ void main ()
 							}
 							d = BuscarMenorVector(vector, n);
 							cout << "\nEl dato menor es: " << d <<".";
+							getch();
 							break;
 					}
 					
 				}
 				break;
 			case('M'):
+				c2 = ' ';
+				while(c2 != 'V')
+				{
+			   		clrscr();
+					cout << "(C) llenar matriz.\n";
+					cout << "(M) Imprimir matriz.\n";
+					cout << "(I) Matriz identidad.\n";
+					cout << "(E) Matriz simetrica.\n";
+					cout << "(B) Matriz transpuesta.\n";
+					cout << "(G) Imprimir elementos de la diagonal principal.\n";
+					cout << "(L) Imprimir elementos de la diagonal secundaria.\n";
+					cout << "(V) Volver al menu principal.\n";
+					c2 = IngresarCaracterOpcionesMensaje(opM2,8);
+					int d = 0;
+					int b = 0;
+					switch(c2)
+					{
+						case('C'):
+							m2 = IngresarNumeroPositivo("Ingrese el numero de datos de filas de la matriz: ");
+							n2 = IngresarNumeroPositivo("Ingrese el numero de datos de columnas de la matriz: ");
+							matriz = new int[m2][n2];
+							LlenarMatriz(matriz, m2, n2);
+							mc = true;
+							break;
+					}
+				}	
 				break;
 			case('E'):
 				break;
