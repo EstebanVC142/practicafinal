@@ -321,7 +321,7 @@ void Perdieron()
 		cout << "|"<< codCalc[i]<<"|";
 	}
 	cout << "\nLos codigos de los estudiantes que perdieron ambas materias son:\n";
-	for (int i = 0; i < contar; i++)
+	for (int i = 0; i < contador; i++)
 	{
 		cout << "|"<< codAmb[i]<<"|";
 	}
