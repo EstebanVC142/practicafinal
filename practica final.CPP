@@ -153,7 +153,7 @@ void EliminarDatoVector(int* &_vector,int d, int &_n)
 	_n -= contar;
 }
 //----------> Funciones para matriz
-void LlenarMatriz(int* &_matriz,int _m2, int _n2)	
+void LlenarMatriz(int** &_matriz,int _m2, int _n2)	
 {
 
 	for (int i = 0; i < _m2; ++i)
