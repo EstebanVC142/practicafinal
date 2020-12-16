@@ -571,7 +571,8 @@ void main ()
 				}	
 				break;
 			case('E'):
-
+            Perdieron();
+            getch();
 				break;
 			case('T'):
 				break;
