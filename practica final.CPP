@@ -166,6 +166,19 @@ void LlenarMatriz(int** &_matriz,int _m2, int _n2)
 	}
 }
 
+void ImprimirMatriz(int** &_matriz,int _m2, int _n2)	
+{
+
+	for (int i = 0; i < _m2; ++i)
+	{
+		for (int j = 0; j <  _n2; j++)
+		{
+			cout << "|"<<_matriz[i][j] <<"|";
+		}	
+		cout << "\n";
+	}
+}
+
 ////////////////////////////////// Programa principal
 void main ()
 {
@@ -341,8 +354,24 @@ void main ()
 							}
 							LlenarMatriz(matriz, m2, n2);
 							mc = true;
+							break;			
+						case('M'):
+							if (!mc)
+							{
+								cout << "Debe ingresar la matriz antes de usar esta opcion.";
+								getch();
+								break;
+							}
+							if (n <= 0)
+							{
+								cout << "\nLa matriz esta vacia.";
+								getch();
+								break;
+							}
+							ImprimirMatriz(matrz, m2, n2);
+							getch();
 							break;
-					}
+					}	
 				}	
 				break;
 			case('E'):
