@@ -155,7 +155,11 @@ void EliminarDatoVector(int* &_vector,int d, int &_n)
 //----------> Funciones para matriz
 void LlenarMatriz(int** &_matriz,int _m2, int _n2)	
 {
-
+	if (_n2 == 0 || _m2 == 0) 
+	{
+		cout << "\nEl tamaño de las filas y columnas debe ser mayor a 0.";
+		mc = false; 
+	}
 	for (int i = 0; i < _m2; ++i)
 	{
 		for (int j = 0; j <  _n2; j++)
@@ -264,6 +268,64 @@ int** TranspuestaMatriz(int** _matriz,int _m2, int _n2)
 		}
 	}
 	return (__matriz);
+}
+//--------------> Funciones para menu E
+
+void Perdieron()
+{
+	int pl = IngresarNumeroPositivo("\nIngrese el numero de estudiantes que perdieron lenguaje de programacion 1: ");
+	int pc = IngresarNumeroPositivo("\nIngrese el numero de estudiantes que perdieron calculo: ");
+	int* codLeng = new int [pl];
+	int* codCalc = new int [pc];
+	for (int i = 0; i < pl; i++)
+	{
+		codLeng[i] = IngresarNumeroPositivo("\nCodigo del estudiante que perdio lenguaje de programacion 1: ");
+	}
+	for (int i = 0; i < pc; i++)
+	{
+		codCalc[i] = IngresarNumeroPositivo("\nCodigo del estudiante que perdio calculo: ");
+	}
+	int contador = 0;
+	for (int i = 0; i < pl; ++i)
+	{
+		for (int j = 0; j < pc; j++)
+		{
+			if (codLeng[i] == codCalc[j])
+			{
+				contador++;
+			}
+		}
+	}
+	int* codAmb = new int [contador];
+	int k = 0; 
+	for (int i = 0; i < pl; ++i)
+	{
+		for (int j = 0; j < pc; j++)
+		{
+			if (codLeng[i] == codCalc[j])
+			{
+				codAmb[k] = codCalc[i];
+				k++;
+			}	
+		}
+	}
+
+	cout << "\nLos codigos de los estudiantes que perdieron lenguaje de programacion 1 son:\n";
+	for (int i = 0; i < pl; i++)
+	{
+		cout << "|"<< codLeng[i]<<"|";
+	}
+	cout << "\nLos codigos de los estudiantes que perdieron calculo son:\n";
+	for (int i = 0; i < pc; i++)
+	{
+		cout << "|"<< codCalc[i]<<"|";
+	}
+	cout << "\nLos codigos de los estudiantes que perdieron ambas materias son:\n";
+	for (int i = 0; i < contar; i++)
+	{
+		cout << "|"<< codAmb[i]<<"|";
+	}
+
 }
 
 ////////////////////////////////// Programa principal
@@ -430,7 +492,7 @@ void main ()
 					c2 = IngresarCaracterOpcionesMensaje(opM2,8);
 					int d = 0;
 					int b = 0;
-					if (c2=='C'){
+					if (c2 == 'C'){
 						m2 = IngresarNumeroPositivo("Ingrese el numero de datos de filas de la matriz: ");
 						n2 = IngresarNumeroPositivo("Ingrese el numero de datos de columnas de la matriz: ");
 						matriz = new int* [m2];
@@ -438,46 +500,78 @@ void main ()
 						{
 							matriz[i] = new int [n2];
 						}
-						LlenarMatriz(matriz, m2, n2);
 						mc = true;
+						LlenarMatriz(matriz, m2, n2);
                		}else if(c2 == 'M'){
-						ImprimirMatriz(matriz, m2, n2);
-						getch();
+
+						if (mc != true)
+						{
+							ImprimirMatriz(matriz, m2, n2);
+							getch();
+						}else{
+							cout << "\nDebe ingresar primero la matriz.";
+						}
                		}else if(c2 == 'I'){
-						aux = IdentidadMatriz(matriz, m2, n2);
-						if (aux == 0)
+               			if (mc != true)
 						{
-							cout << "\nLa matriz SI es identidad.";
+							aux = IdentidadMatriz(matriz, m2, n2);
+							if (aux == 0)
+							{
+								cout << "\nLa matriz SI es identidad.";
+							}else{
+								cout << "\nLa matriz NO es identidad.";
+							}
+							getch();
 						}else{
-							cout << "\nLa matriz NO es identidad.";
+							cout << "\nDebe ingresar primero la matriz.";
 						}
-						getch();
                		}else if(c2 == 'E'){
-						aux = SimetricaMatriz(matriz, m2, n2);
-						if (aux == 0)
+               			if (mc != true)
 						{
-							cout << "\nLa matriz SI es simetrica.";
+							aux = SimetricaMatriz(matriz, m2, n2);
+							if (aux == 0)
+							{
+								cout << "\nLa matriz SI es simetrica.";
+							}else{
+								cout << "\nLa matriz NO es simetrica.";
+							}
+							getch();
 						}else{
-							cout << "\nLa matriz NO es simetrica.";
+							cout << "\nDebe ingresar primero la matriz.";
 						}
-						getch();
                		}else if(c2 == 'B'){
-						matriz = TranspuestaMatriz(matriz, m2, n2);
-						aux = m2;
-						m2 = n2;
-						n2 = aux;    
-						cout << "\nLa matriz fue transpuesta.";
-						getch();
+               			if (mc != true)
+						{
+							matriz = TranspuestaMatriz(matriz, m2, n2);
+							aux = m2;
+							m2 = n2;
+							n2 = aux;    
+							cout << "\nLa matriz fue transpuesta.";
+							getch();
+						}else{
+							cout << "\nDebe ingresar primero la matriz.";
+						}
                		}else if(c2 == 'G'){
-						DiagonalPrincipalMatriz(matriz, m2, n2);  
-						getch();
+               			if (mc != true)
+						{
+							DiagonalPrincipalMatriz(matriz, m2, n2);  
+							getch();
+						}else{
+							cout << "\nDebe ingresar primero la matriz.";
+						}
                		}else if(c2 == 'L'){
-						DiagonalSecundariaMatriz(matriz, m2, n2);  
-						getch();
+               			if (mc != true)
+						{
+							DiagonalSecundariaMatriz(matriz, m2, n2);  
+							getch();
+						}else{
+							cout << "\nDebe ingresar primero la matriz.";
+						}
 					}	
 				}	
 				break;
 			case('E'):
+
 				break;
 			case('T'):
 				break;
