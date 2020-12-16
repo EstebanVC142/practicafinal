@@ -181,6 +181,10 @@ void ImprimirMatriz(int** &_matriz,int _m2, int _n2)
 
 int IdentidadMatriz(int** &_matriz,int _m2, int _n2)	
 {
+	if (m2 !=  n2)
+	{
+		return (1);
+	}
 	int identidad = 0;
 	for (int i = 0; i < _m2; i++)
 	{
@@ -197,6 +201,43 @@ int IdentidadMatriz(int** &_matriz,int _m2, int _n2)
 }
 
 
+int SimetricaMatriz(int** &_matriz,int _m2, int _n2)	
+{
+	if (m2 !=  n2)
+	{
+		return (1);
+	}
+	int simetrica = 0;
+	for (int i = 0; i < _m2; i++)
+	{
+		for (int j = 0; j <  _n2; j++)
+		{
+			if ((matriz[i][j] != matriz[j][i]))
+			{
+				simetrica = 1;
+				return (simetrica);
+			}
+		}
+	}
+	return (simetrica);
+}
+
+int** TranspuestaMatriz(int** &_matriz,int _m2, int _n2)	
+{
+	int** __matriz = new int* [_n2];
+	for (int i = 0; i < _n2; i++)
+	{
+		__matriz[i] = new int [_m2];
+	}
+	for (int i = 0; i < _m2; i++)
+	{
+		for (int j = 0; j <  _n2; j++)
+		{
+			__matriz[j][i] == _matriz[i][j]; 
+		}
+	}
+	return (__matriz);
+}
 
 ////////////////////////////////// Programa principal
 void main ()
@@ -375,15 +416,27 @@ void main ()
                		}else if(c2 == 'M'){
 						ImprimirMatriz(matriz, m2, n2);
 						getch();
-               		}else if(c2 == 'M'){
+               		}else if(c2 == 'I'){
 						aux = IdentidadMatriz(matriz, m2, n2);
 						if (aux == 0)
 						{
-							cout << "\nLa matriz es identidad.";
+							cout << "\nLa matriz SI es identidad.";
 						}else{
-							cout << "\nLa matriz no es identidad.";
+							cout << "\nLa matriz NO es identidad.";
 						}
-
+						getch();
+               		}else if(c2 == 'E'){
+						aux = SimetricaMatriz(matriz, m2, n2);
+						if (aux == 0)
+						{
+							cout << "\nLa matriz SI es simetrica.";
+						}else{
+							cout << "\nLa matriz NO es simetrica.";
+						}
+						getch();
+               		}else if(c2 == 'B'){
+						matriz = TranspuestaMatriz(matriz, m2, n2);
+						cout << "\nLa matriz fue transpuesta.";
 						getch();
 					}	
 				}	
