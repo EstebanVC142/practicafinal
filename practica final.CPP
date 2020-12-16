@@ -212,7 +212,7 @@ int SimetricaMatriz(int** &_matriz,int _m2, int _n2)
 	{
 		for (int j = 0; j <  _n2; j++)
 		{
-			if ((matriz[i][j] != matriz[j][i]))
+			if ((_matriz[i][j] != _matriz[j][i]))
 			{
 				simetrica = 1;
 				return (simetrica);
@@ -220,6 +220,33 @@ int SimetricaMatriz(int** &_matriz,int _m2, int _n2)
 		}
 	}
 	return (simetrica);
+}
+void DiagonalPrincipalMatriz(int** &_matriz,int _m2, int _n2)	
+{
+	if (m2 !=  n2)
+	{
+		cout << "Por definicion, la matriz DEBE ser cuadrada.";
+		return;
+	}
+	cout <<"\nLa diagonal principal es: \n\t\t";
+	for (int i = 0; i < _m2; i++)
+	{
+		cout << "|"<< _matriz[i][i]<< "|";
+	}
+}
+
+void DiagonalSecundariaMatriz(int** &_matriz,int _m2, int _n2)	
+{
+	if (m2 !=  n2)
+	{
+		cout << "Por definicion, la matriz DEBE ser cuadrada.";
+		return;
+	}
+	cout <<"\nLa diagonal secundaria es: \n\t\t";
+	for (int i = 0; i < _m2; i++)
+	{
+		cout << "|"<< _matriz[i][_n2-(i+1)]<< "|";
+	}
 }
 
 int** TranspuestaMatriz(int** _matriz,int _m2, int _n2)
@@ -436,10 +463,16 @@ void main ()
 						getch();
                		}else if(c2 == 'B'){
 						matriz = TranspuestaMatriz(matriz, m2, n2);
-                  aux = m2;
-                  m2 = n2;
-                  n2 = aux;    
+						aux = m2;
+						m2 = n2;
+						n2 = aux;    
 						cout << "\nLa matriz fue transpuesta.";
+						getch();
+               		}else if(c2 == 'G'){
+						DiagonalPrincipalMatriz(matriz, m2, n2);  
+						getch();
+               		}else if(c2 == 'L'){
+						DiagonalSecundariaMatriz(matriz, m2, n2);  
 						getch();
 					}	
 				}	
