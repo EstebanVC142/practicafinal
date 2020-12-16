@@ -194,6 +194,12 @@ void main ()
 								getch();
 								break;
 							}
+							if (n <= 0)
+							{
+								cout << "\nEl vector esta vacio.";
+								getch();
+								break;
+							}
 							ImprimirVector(vector, n);
 							getch();
 							break;
@@ -215,6 +221,12 @@ void main ()
 								getch();
 								break;
 							}
+							if (n <= 0)
+							{
+								cout << "\nNo hay datos en el vector para realizar esta operacion.";
+								getch();
+								break;
+							}
 							d = IngresarNumero("Ingrese el dato que desea eliminar: ");
 							EliminarDatoVector(vector, d, n);
 							break;
@@ -222,6 +234,12 @@ void main ()
 							if(!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
+								break;
+							}
+							if (n <= 0)
+							{
+								cout << "\nNo hay datos en el vector para realizar esta operacion.";
 								getch();
 								break;
 							}
@@ -239,7 +257,18 @@ void main ()
 							getch();
 							break;
 						case('G'):
-
+							if (!vc)
+							{
+								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
+								break;
+							}
+							if (n <= 0)
+							{
+								cout << "\nNo hay datos en el vector para realizar esta operacion.";
+								getch();
+								break;
+							}
 							d = BuscarMayorVector(vector, n);
 							cout << "\nEl dato mayor es: " << d <<".";
 							break;
@@ -247,6 +276,12 @@ void main ()
 							if(!vc)
 							{
 								cout << "Debe ingresar el vector antes de usar esta opcion.";
+								getch();
+								break;
+							}
+							if (n <= 0)
+							{
+								cout << "\nNo hay datos en el vector para realizar esta operacion.";
 								getch();
 								break;
 							}
