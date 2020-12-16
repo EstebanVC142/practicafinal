@@ -330,7 +330,7 @@ void main ()
 				c2 = ' ';
 				while(c2 != 'V')
 				{
-			   		clrscr();
+            	clrscr();
 					cout << "(C) llenar matriz.\n";
 					cout << "(M) Imprimir matriz.\n";
 					cout << "(I) Matriz identidad.\n";
@@ -342,9 +342,7 @@ void main ()
 					c2 = IngresarCaracterOpcionesMensaje(opM2,8);
 					int d = 0;
 					int b = 0;
-					switch(c2)
-					{
-						case('C'):
+					if (c2=='C'){
 							m2 = IngresarNumeroPositivo("Ingrese el numero de datos de filas de la matriz: ");
 							n2 = IngresarNumeroPositivo("Ingrese el numero de datos de columnas de la matriz: ");
 							matriz = new int* [m2];
@@ -354,23 +352,10 @@ void main ()
 							}
 							LlenarMatriz(matriz, m2, n2);
 							mc = true;
-							break;			
-						case('M'):
-							if (!mc)
-							{
-								cout << "Debe ingresar la matriz antes de usar esta opcion.";
-								getch();
-								break;
-							}
-							if (n <= 0)
-							{
-								cout << "\nLa matriz esta vacia.";
-								getch();
-								break;
-							}
-							ImprimirMatriz(matrz, m2, n2);
+               }else if(c2 == 'M'){
+							ImprimirMatriz(matriz, m2, n2);
 							getch();
-							break;
+
 					}	
 				}	
 				break;
