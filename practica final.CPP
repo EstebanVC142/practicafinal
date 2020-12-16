@@ -222,7 +222,7 @@ int SimetricaMatriz(int** &_matriz,int _m2, int _n2)
 	return (simetrica);
 }
 
-int** TranspuestaMatriz(int** &_matriz,int _m2, int _n2)	
+int** TranspuestaMatriz(int** _matriz,int _m2, int _n2)
 {
 	int** __matriz = new int* [_n2];
 	for (int i = 0; i < _n2; i++)
@@ -233,7 +233,7 @@ int** TranspuestaMatriz(int** &_matriz,int _m2, int _n2)
 	{
 		for (int j = 0; j <  _n2; j++)
 		{
-			__matriz[j][i] == _matriz[i][j]; 
+			__matriz[j][i] = _matriz[i][j];
 		}
 	}
 	return (__matriz);
@@ -436,6 +436,9 @@ void main ()
 						getch();
                		}else if(c2 == 'B'){
 						matriz = TranspuestaMatriz(matriz, m2, n2);
+                  aux = m2;
+                  m2 = n2;
+                  n2 = aux;    
 						cout << "\nLa matriz fue transpuesta.";
 						getch();
 					}	
