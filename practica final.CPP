@@ -153,7 +153,7 @@ void EliminarDatoVector(int* &_vector,int d, int &_n)
 	_n -= contar;
 }
 //----------> Funciones para matriz
-void LlenarMatriz(int* &_matriz,int _m2, _n2)	
+void LlenarMatriz(int* &_matriz,int _m2, int _n2)	
 {
 
 	for (int i = 0; i < _m2; ++i)
@@ -334,7 +334,11 @@ void main ()
 						case('C'):
 							m2 = IngresarNumeroPositivo("Ingrese el numero de datos de filas de la matriz: ");
 							n2 = IngresarNumeroPositivo("Ingrese el numero de datos de columnas de la matriz: ");
-							matriz = new int[m2][n2];
+							matriz = new int* [m2];
+							for (int i = 0; i < m2; i++)
+							{
+								matriz[i] = new int [n2];
+							}
 							LlenarMatriz(matriz, m2, n2);
 							mc = true;
 							break;
